@@ -2,6 +2,8 @@ package cases;
 
 import org.telegram.telegrambots.meta.api.objects.Update;
 
+import application.boilerplate.DocumentLoader;
+import application.boilerplate.DocumentSender;
 import application.boilerplate.MessageSender;
 import application.context.annotation.Component;
 import application.context.annotation.Inject;
@@ -12,6 +14,12 @@ public class Case0 {
 
 	@Inject
 	MessageSender sender;
+	
+	@Inject
+	DocumentSender docSender;
+	
+	@Inject
+	DocumentLoader docLoader;
 	
 	@Inject
 	UserService userService;
