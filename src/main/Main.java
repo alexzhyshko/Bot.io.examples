@@ -1,3 +1,5 @@
+package main;
+
 import application.startup.Application;
 
 public class Main {

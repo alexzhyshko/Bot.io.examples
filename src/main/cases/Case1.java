@@ -1,4 +1,4 @@
-package cases;
+package main.cases;
 
 import org.telegram.telegrambots.meta.api.objects.Update;
 
@@ -6,7 +6,7 @@ import application.boilerplate.MessageSender;
 import application.context.annotation.Case;
 import application.context.annotation.Component;
 import application.context.annotation.Inject;
-import service.UserService;
+import main.service.UserService;
 
 @Component
 @Case
