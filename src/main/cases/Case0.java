@@ -1,35 +1,56 @@
 package main.cases;
 
+
+import java.util.Arrays;
+
 import org.telegram.telegrambots.meta.api.objects.Update;
 
-import application.boilerplate.DocumentLoader;
-import application.boilerplate.DocumentSender;
+import application.boilerplate.MessageEditor;
 import application.boilerplate.MessageSender;
+import application.boilerplate.dto.InlineButton;
+import application.context.annotation.Callback;
+import application.context.annotation.Case;
 import application.context.annotation.Component;
 import application.context.annotation.Inject;
-import main.service.UserService;
+import application.routing.RouterManager;
+import application.session.SessionManager;
 
 @Component
+@Case(caseNumber=0)
 public class Case0 {
 
 	@Inject
-	MessageSender sender;
+	private MessageSender sender;
 	
 	@Inject
-	DocumentSender docSender;
+	private MessageEditor editor;
 	
 	@Inject
-	DocumentLoader docLoader;
+	private SessionManager sessionManager;
 	
 	@Inject
-	UserService userService;
+	private RouterManager router;
 	
-	public void onRouteReceived(Update update) {
+	
+	@Case
+	public void a(Update update) {
 		int userid = update.getMessage().getFrom().getId();
 		sender.setChatId(userid);
-		sender.setText("case 0 works");
+		sender.setText("Test inline");
+		sender.setInlineButtons(Arrays.asList(new InlineButton("Test inline", "test_inline")));
 		sender.sendMessage();
-		userService.setUserState(userid, 1);
+		router.routeCallbackToClass(userid, Case1.class);
+	}
+	
+	@Callback(command="new_inline")
+	public void t(Update update) {
+		int userid = update.getCallbackQuery().getFrom().getId();
+		editor.setChatId(userid);
+		editor.setMessageId(update.getCallbackQuery().getMessage().getMessageId());
+		editor.setText("Test inline");
+		editor.setInlineButtons(Arrays.asList(new InlineButton("Test inline", "test_inline")));
+		editor.sendMessage();
+		router.routeCallbackToClass(userid, Case1.class);
 	}
 	
 }
