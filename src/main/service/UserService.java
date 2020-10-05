@@ -3,12 +3,11 @@ package main.service;
 
 import java.util.HashMap;
 
+import application.adapters.UserServiceAdapter;
 import application.context.annotation.Component;
-import application.context.annotation.UserServiceMarker;
 
 @Component
-@UserServiceMarker
-public class UserService {
+public class UserService implements UserServiceAdapter{
 
 	HashMap<Integer, Integer> cases = new HashMap<>();
 

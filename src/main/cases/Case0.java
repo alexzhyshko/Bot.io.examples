@@ -49,7 +49,7 @@ public class Case0 {
 		editor.setMessageId(update.getCallbackQuery().getMessage().getMessageId());
 		editor.setText("Test inline");
 		editor.setInlineButtons(Arrays.asList(new InlineButton("Test inline", "test_inline")));
-		editor.sendMessage();
+		editor.editMessage();
 		router.routeCallbackToClass(userid, Case1.class);
 	}
 	
