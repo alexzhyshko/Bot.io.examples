@@ -6,14 +6,14 @@ import application.boilerplate.MessageDeleter;
 import application.boilerplate.MessageEditor;
 import application.boilerplate.MessageSender;
 import application.context.annotation.Callback;
-import application.context.annotation.Case;
 import application.context.annotation.Component;
 import application.context.annotation.Inject;
+import application.context.annotation.State;
 import application.routing.RouterManager;
 import application.session.SessionManager;
 
 @Component
-@Case(caseNumber = 1)
+@State(1)
 public class Case1 {
 
 	@Inject

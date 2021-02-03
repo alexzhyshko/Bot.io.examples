@@ -11,14 +11,16 @@ public class UserService implements UserServiceAdapter{
 
 	HashMap<Integer, Integer> cases = new HashMap<>();
 
-	public int getUserState(int userid) {
+	@Override
+    public int getUserState(int userid) {
 		if (cases.get(userid) == null) {
 			setUserState(userid, 0);
 		}
 		return cases.get(userid);
 	}
 
-	public void setUserState(int userid, int state) {
+	@Override
+    public void setUserState(int userid, int state) {
 		cases.put(userid, state);
 	}
 	

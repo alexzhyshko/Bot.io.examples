@@ -12,11 +12,12 @@ import application.context.annotation.Callback;
 import application.context.annotation.Case;
 import application.context.annotation.Component;
 import application.context.annotation.Inject;
+import application.context.annotation.State;
 import application.routing.RouterManager;
 import application.session.SessionManager;
 
 @Component
-@Case(caseNumber=0)
+@State(0)
 public class Case0 {
 
 	@Inject
